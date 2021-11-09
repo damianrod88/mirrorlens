@@ -333,3 +333,6 @@ body {
 .container-fluid {
     padding: 0 !important;
 }
+.navbar-toggler {
+    padding: 0.15rem 0.45rem !important;
+}
