@@ -174,7 +174,7 @@ body {
 
 .container-content {
     margin: auto;
-    margin-top: 200px;
+    margin-top: 175px;
     width: 300px;
 }
 .create-form {
@@ -206,8 +206,26 @@ body {
     border: none;
     font-size: 15px;
     color: white;
-    padding: 5px 10px;
+    padding: 10px 10px;
     border-radius: 5px;
+    width: 100%;
+}
+.button-g {
+    background-color: #fff;
+    border: 1px #000 solid;
+    font-size: 18px;
+    padding: 10px 10px;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.fa-google {
+    margin-right: 20px;
+}
+.fa-facebook-square {
+    margin-right: 20px;
 }
 
 .button-form-content {
@@ -244,13 +262,12 @@ body {
     border-bottom: 1px solid rgba(104, 104, 104, 0.55);
 }
 .footer-block-tittle {
-    font-size: 1.35rem;
     padding: 1rem 0px;
     color: black;
 }
 .footer-block-content {
     padding-bottom: 1.25rem;
-    font-size: 1rem;
+
     font-weight: 600;
 }
 .footer-menu {
@@ -276,7 +293,6 @@ body {
 }
 
 .cartitems {
-    font-size: 1rem;
     display: flex;
     justify-content: center;
     height: 358px;

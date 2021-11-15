@@ -9,4 +9,20 @@
         padding: 15px;
         font-size: 20px;
     }
+    .container-content {
+        display: flex;
+        width: 50%;
+        align-items: center;
+    }
+    .button-g {
+        max-width: 300px;
+    }
+    .button-gf {
+        max-width: 300px;
+        margin-right: 25px;
+    }
+    .create-form {
+        width: 100%;
+        max-width: 300px;
+    }
 }
