@@ -1,4 +1,8 @@
 @media (min-width: 1200px) {
+    .logo img {
+        width: 90px;
+    }
+
     .header-container {
         flex-wrap: wrap;
     }
@@ -7,7 +11,7 @@
     }
     .right-icon-menu-desktop i {
         padding: 15px;
-        font-size: 20px;
+        font-size: 17px;
     }
     .container-content {
         display: flex;
@@ -28,8 +32,5 @@
     .create-form {
         width: 100%;
         max-width: 300px;
-    }
-    .pt-5 {
-        padding-top: 160px !important;
     }
 }

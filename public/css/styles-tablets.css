@@ -1,6 +1,8 @@
 @media (min-width: 768px) {
     .nav-bar {
         display: block;
+        margin-top: 7px;
+        margin-left: 33px;
     }
     .icon-menu {
         display: none;
@@ -46,6 +48,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
+        margin-top: 0px;
     }
 
     .block-shop-for-men {
@@ -65,12 +68,15 @@
     }
 
     .logo img {
-        width: 140px;
+        width: 65px;
     }
     .div-slider {
         margin-top: 140px;
     }
     .cart-content {
         margin-top: 180px;
+    }
+    .pt-5 {
+        padding-top: 60px !important;
     }
 }
