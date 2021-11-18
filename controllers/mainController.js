@@ -82,7 +82,7 @@ const mainController = {
         if (product) {
             res.render("products", {
                 product,
-                pageTitle: product.name + " - Mirorrlens",
+                pageTitle: product.name + " - Mirrorlens",
             });
         } else {
             res.send("te equivocaste");
