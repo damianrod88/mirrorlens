@@ -19,6 +19,7 @@
     .description {
         display: block;
         font-size: 12px;
+        margin: 0px;
     }
     .button {
         display: none;

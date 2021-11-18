@@ -1,4 +1,4 @@
-@media (max-width: 480px) {
+/*@media (max-width: 768px) {
     .modelos {
         display: none;
     }
@@ -9,7 +9,7 @@
 
     .product-description {
         max-width: 400px;
-        width: 100%;
+        width: 50%;
         margin-top: 15px;
     }
     .star-description {
