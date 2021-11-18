@@ -6,6 +6,8 @@ const products = [
         desc: "10% OFF",
         price: "$12.530",
         img: "/images/OAKLEY_9102_01_800x.jpg",
+        img2: "/images/OAKLEY_9102_01_2_800x.jpg",
+        img3: "/images/Medidas-Final_44b4698e-f740-45d5-b0ec-725ce4d9c426_800x.jpg",
         descr: "Color: Negro, Color de lente: Gris, Material: Plastico, Medidas: 55-18-137, Tipo: Unisex / Aro Completo, Peso: 27 gramos",
     },
     {
@@ -51,7 +53,7 @@ const products = [
 ];
 const mainController = {
     home: function (req, res) {
-        res.render("home");
+        res.render("home", { products });
     },
     login: function (req, res) {
         res.render("login", {

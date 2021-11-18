@@ -1,6 +1,5 @@
 .prod-container {
     margin: 0px auto;
-    background-color: #e7e7e7;
 }
 
 .main-product {
@@ -52,7 +51,7 @@
 
 .product-description {
     height: auto;
-    width: 60%;
+    width: 190px;
     border: 2px solid rgba;
     border-radius: 20px;
     background-color: white;
@@ -80,30 +79,30 @@
     font-weight: bold;
 }
 
-.button-position {
-    text-align: center;
-}
-
-.button {
+.button-product {
+    width: 70%;
+    height: 60px;
     margin: 30px auto;
-    background-color: white;
+    background-color: #3483fa;
     border: none;
     color: black;
-    padding: 15px 32px;
+    padding: 5px 25px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border: 2px solid #3483fa;
-    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border: 1px solid #3483fa;
+    text-transform: uppercase;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
 }
 
+/*
 .button:hover {
-    background-color: #3483fa; /* Green */
+    background-color: #3483fa; 
     color: white;
-}
+}*/
 
 .related-products {
     margin: 40px;
@@ -134,30 +133,35 @@
     transition: box-shadow 0.1s;
 }
 
-@media (min-width: 769px) {
-    .button-tablet {
-        display: none;
-    }
-}
-/* button para tablet*/
+/* button para tablet
 .button1 {
     margin: 30px auto;
-    background-color: white;
-    border: none;
+    background-color: #ebebeb;
+
     color: black;
-    padding: 15px 32px;
+    padding: 5px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    border: 2px solid #3483fa;
-    border-radius: 15px;
+
+    border-radius: 5px;
 }
 .button1 {
-    -webkit-transition-duration: 0.4s; /* Safari */
+    -webkit-transition-duration: 0.4s; 
     transition-duration: 0.4s;
 }
 .button1:hover {
-    background-color: #3483fa; /* Green */
+    background-color: #3483fa; 
     color: white;
+} 
+*/
+
+.carousel {
+    width: 90% !important;
+}
+.carousel-inner {
+    border-radius: 15px !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
 }

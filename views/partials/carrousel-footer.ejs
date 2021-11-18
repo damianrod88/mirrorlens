@@ -18,13 +18,18 @@
                     <div class="col-md-3 col-sm-3 col-xs-12">
                         <div class="slider-item">
                             <div class="slider-image">
-                                <img src="\images\ray-ban.jpg" class="img-responsive" alt="a" />
+                                <a href="<%=`/collections/${products[0].id}` %>">
+                                    <img src="<%= products[0].img %> " class="img-responsive" alt="a" /></a>
                             </div>
                             <div class="slider-main-detail">
                                 <div class="slider-detail">
                                     <div class="product-detail">
-                                        <h5>Ray-ban</h5>
-                                        <h5 class="detail-price">$692.41</h5>
+                                        <h5>
+                                            <%= products[0].name %>
+                                        </h5>
+                                        <h5 class="detail-price">
+                                            <%= products[0].price %>
+                                        </h5>
                                     </div>
                                 </div>
                                 <div class="cart-section">
