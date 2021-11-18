@@ -3,7 +3,7 @@
 
 <head>
   <%- include("./partials/head") %>
-    <title>Ray-ban Aviator</title>
+
 </head>
 
 <body>
@@ -12,22 +12,28 @@
       <article>
         <section class="main-product">
           <div class="modelos">
-            <img class="rusty-bruk1" src="/images/lentes-de-sol-rusty-bruk1.jpg">
-            <img class="rusty-bruk1" src="/images/lentes-de-sol-rusty-bruk2.jpg">
-            <img class="rusty-bruk1" src="/images/lentes-de-sol-rusty-bruk1.jpg">
+            <img class="rusty-bruk1" src="<%= product.img %> ">
+            <img class="rusty-bruk1" src="<%= product.img %> ">
+            <img class="rusty-bruk1" src="<%= product.img %> ">
           </div>
           <div class="image-product">
-            <img class="rusty-bruk" src="/images/lentes-de-sol-rusty-bruk.jpg" alt="imagen principal">
+            <img class="rusty-bruk" src="<%= product.img %> " alt="imagen principal">
           </div>
           <div class="product-description">
 
-            <h1>Ray Ban Aviator</h1>
+            <h1>
+              <%= product.name %>
+            </h1>
             <div class="star-description">
               <i class="far fa-star"></i> <i class="far fa-star"></i><i class="far fa-star"></i><i
                 class="far fa-star"></i><i class="far fa-star"></i>
             </div>
-            <P class="price">$15.000</P>
-            <P class="description">Comodos y modernos lentes Ray Ban aviator con marco dorado en distintos colores</P>
+            <P class="price">
+              <%= product.price %>
+            </P>
+            <P class="description">
+              <%= product.descr %>
+            </P>
 
             <p class="button-position">
               <button class="button" type="submit" name="comprar" id="">
