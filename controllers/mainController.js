@@ -64,7 +64,7 @@ const mainController = {
         });
     },
     shop: function (req, res) {
-        res.render("shop", { products, pageTitle: "Productos - Mirorlens" });
+        res.render("shop", { products, pageTitle: "Productos - Mirrorlens" });
     },
     products: function (req, res) {
         res.render("products");
@@ -82,7 +82,7 @@ const mainController = {
         if (product) {
             res.render("products", {
                 product,
-                pageTitle: product.name + " - Mirorlens",
+                pageTitle: product.name + " - Mirorrlens",
             });
         } else {
             res.send("te equivocaste");
