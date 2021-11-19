@@ -3,7 +3,6 @@
 
 <head>
   <link rel="stylesheet" href="/css/products.css" type="text/css" />
-  <link rel="stylesheet" href="/css/product-mobile.css" type="text/css" />
   <link rel="stylesheet" href="/css/product-tablet.css" type="text/css" />
   <%- include("./partials/head") %>
 
@@ -29,22 +28,22 @@
               </div>
             </div>
           </div>
+          <div class="product-button">
+            <div class="product-description">
 
-          <div class="product-description">
-
-            <h1>
-              <%= product.name %>
-            </h1>
-            <P class="price">
-              <%= product.price %>
-            </P>
-            <!-- <div class="star-description">
+              <h1>
+                <%= product.name %>
+              </h1>
+              <P class="price">
+                <%= product.price %>
+              </P>
+              <!-- <div class="star-description">
               <i class="far fa-star"></i> <i class="far fa-star"></i><i class="far fa-star"></i><i
                 class="far fa-star"></i><i class="far fa-star"></i>
             </div> -->
-            <P class="description">
-              <%= product.descr %>
-            </P>
+              <P class="description">
+                <%= product.descr %>
+              </P>
 
 
 
@@ -52,22 +51,16 @@
 
 
 
+            </div>
+            <button class="button-product" type="submit" name="comprar" id="">Agregar al carrito - <%= product.price %>
+            </button>
           </div>
-          <button class="button-product" type="submit" name="comprar" id="">Agregar al carrito <%= product.price %>
-              </button>
-
 
       </article>
 
       </section>
 
-      <!-- <div class="button-tablet">
-        <p class="button-position">
-          <button class="button1" type="submit" name="comprar" id="">
-            <p>Comprar ahora</p>
-          </button>
-        </p>
-      </div> -->
+
 
       <section class="related-products">
         <h2>Productos Relacionados</h2>
