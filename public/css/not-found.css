@@ -90,7 +90,6 @@ body {
     padding: 0;
     text-shadow: 0 0 1rem #fefefe;
     color: white;
-    font-weight: bold;
 }
 @media (max-width: 770px) {
     .heading {
@@ -108,7 +107,6 @@ body {
     padding: 0 1rem;
     margin: 0 auto;
     color: white;
-    font-weight: bold;
 }
 @media (max-width: 770px) {
     .subheading {
