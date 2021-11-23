@@ -99,7 +99,7 @@ const mainController = {
         res.render("shop", { products, pageTitle: "Productos - Mirrorlens" });
     },
     products: function (req, res) {
-        res.render("products");
+        res.render("products", { products });
     },
     cart: function (req, res) {
         res.render("cart", {
@@ -115,10 +115,21 @@ const mainController = {
             res.render("products", {
                 product,
                 pageTitle: product.name + " - Mirrorlens",
+                products,
             });
         } else {
             res.send("te equivocaste");
         }
+    },
+    search: function (req, res) {
+        let busqueda = req.query.search;
+        let precioMax = [];
+        for (let i = 0; i < products.length; i++) {
+            if (products[i].name.includes(busqueda.toUpperCase())) {
+                precioMax.push(products[i]);
+            }
+        }
+        res.render("productsResult", { precioMax: precioMax });
     },
 };
 
