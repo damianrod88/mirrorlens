@@ -1,6 +1,7 @@
 {
-    "cSpell.enabled": true,
+    "cSpell.enabled": false,
     "cSpell.enableFiletypes": [
-        "css"
+        "css",
+        "json"
     ]
 }
