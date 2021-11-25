@@ -390,3 +390,8 @@ body {
     color: black !important;
     font-weight: bold !important;
 }
+
+.thank-header h1 {
+    text-align: center;
+    margin-top: 100px;
+}
