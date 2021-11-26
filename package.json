@@ -5,7 +5,7 @@
     "main": "app.js",
     "scripts": {
         "start": "node ./src/app.js",
-        "start:dev": "nodemon ./src/app.js"
+        "start:dev": "nodemon -e js ./src/app.js"
     },
     "keywords": [],
     "author": "",

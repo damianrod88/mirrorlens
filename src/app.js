@@ -1,7 +1,8 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const rutasMain = require("./routers/main");
+const mainRouter = require("./routers/main");
+const productsRouter = require("./routers/products");
 
 const publicPath = path.join(__dirname, "../public");
 app.use(express.static(publicPath));
@@ -12,7 +13,8 @@ app.use(express.json());
 
 app.listen(process.env.PORT || 3000, () => console.log("Esto fue exitoso"));
 
-app.use("/", rutasMain);
+app.use("/", mainRouter);
+app.use("/collections", productsRouter);
 app.use((req, res, next) => {
     res.status(404).render("not-found");
 });
