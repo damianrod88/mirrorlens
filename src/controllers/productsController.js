@@ -1,29 +1,20 @@
-const fs = require("fs");
-const path = require("path");
-
-const productsFilePath = path.join(__dirname, "../data/productsDataBase.json");
-const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
-const usersFilePath = path.join(__dirname, "../data/users.json");
-const users = JSON.parse(fs.readFileSync(usersFilePath, "utf-8"));
-
+const productService = require("../services/products");
 const controller = {
     collections: function (req, res) {
         res.render("collections", {
-            products,
+            products: productService.products,
             pageTitle: "Productos - Mirrorlens",
         });
     },
 
     detail: (req, res) => {
         const id = req.params.id;
-        const product = products.find((product) => {
-            return id == product.id;
-        });
+        const product = productService.findOne(id);
         if (product) {
             res.render("detail", {
                 product,
                 pageTitle: product.name + " - Mirrorlens",
-                products,
+                products: productService.products,
             });
         } else {
             res.render("not-found");
@@ -31,22 +22,30 @@ const controller = {
     },
 
     create: function (req, res) {
-        res.render("formularioCarga", {
+        res.render("createProd", {
             pageTitle: "Crea tu producto",
         });
     },
     edit: function (req, res) {
+        const product = productService.findOne(id);
         res.render("formularioEditor", {
+            product: productoEncontrado,
             pageTitle: "Modifica tu producto",
         });
     },
     store: function (req, res) {
+        let producto = {
+            id: Date.now(),
+            ...req.body,
+        };
         if (req.file) {
-            let producto = req.body;
             producto.img = req.file.filename;
-            productoId = mainController.create(producto);
-            res.redirect("/collections/" + productoId);
         }
+
+        productService.products.push(producto);
+        res.redirect("/collections/" + producto.id);
+
+        productService.saveProducts();
 
         /*/ if (req.file) {
             producto.img = req.file.filename;

@@ -29,13 +29,15 @@ const controller = {
 
     search: function (req, res) {
         let busqueda = req.query.search;
-        let precioMax = [];
+        let search = [];
         for (let i = 0; i < products.length; i++) {
-            if (products[i].name.includes(busqueda.toUpperCase())) {
-                precioMax.push(products[i]);
+            if (
+                products[i].name.toLowerCase().includes(busqueda.toLowerCase())
+            ) {
+                search.push(products[i]);
             }
         }
-        res.render("productsResult", { precioMax: precioMax });
+        res.render("results", { search: search });
     },
 
     cRegister: function (req, res) {

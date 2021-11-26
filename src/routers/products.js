@@ -23,7 +23,7 @@ router.get("/", productsController.collections);
 
 /*** CREATE ONE PRODUCT ***/
 router.get("/create", productsController.create);
-router.post("/", upload.single("image"), productsController.store);
+router.post("/", upload.single("img"), productsController.store);
 
 /*** GET ONE PRODUCT ***/
 router.get("/:id/", productsController.detail);
