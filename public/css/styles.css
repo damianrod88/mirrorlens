@@ -198,6 +198,14 @@ body {
     border-radius: 5px;
     border: none;
 }
+.control-descrip {
+    height: 100px;
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+}
+
 .control-form {
     margin-bottom: 20px;
 }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./partials/head") %>
+</head>
+
+<body>
+    <%- include("./partials/header") %>
+        <main class="container-content-login">
+            <form action="/products/<%= product.id %>?_method=PUT" method="post" class="create-form"
+                enctype="multipart/form-data">
+                <div class="control-form">
+                    <label for="description" class="form-label">Nombre:</label>
+                    <input type="text" name="user" class="control" value="<%= product.name %>">
+                </div>
+                <div class="control-form">
+                    <label for="description" class="form-label">Imágenes:</label>
+                    <input type="file" name="img" class="control" value="<%= product.img %>">
+                </div>
+                <div class=" control-form">
+                    <label for="description" class="form-label">Tipo de lente:</label>
+                    <input type="text" name="nombre" class="control" value="<%= product.type %>">
+                </div>
+                <div class="control-form">
+                    <label for="description" class="form-label">Modelo:</label>
+                    <input type="text" name="user" class="control" value="<%= product.model %>">
+                </div>
+                <div class="control-form">
+                    <label for="description" class="form-label">Color:</label>
+                    <input type="text" name="user" class="control" value="<%= product.color %>">
+                </div>
+                <div class="control-form">
+                    <label for="price" class="form-label">Precio:</label>
+                    <input type="text" name="user" class="control" value="<%= " $" + product.price %>">
+                </div>
+
+                <div class="control-form">
+                    <label for="description" class="form-label">Descripción:</label>
+                    <textarea name="description" id="description"
+                        class="control-descrip"><%= product.descr %></textarea>
+                </div>
+                <button type="submit" class="button-form">Guardar Edicion</button>
+
+
+            </form>
+        </main>
+
+        <%- include("./partials/footer") %>
+</body>
+
+</html>

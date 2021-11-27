@@ -27,10 +27,11 @@ const controller = {
         });
     },
     edit: function (req, res) {
+        const id = req.params.id;
         const product = productService.findOne(id);
-        res.render("formularioEditor", {
-            product: productoEncontrado,
-            pageTitle: "Modifica tu producto",
+        res.render("editProd", {
+            product: product,
+            pageTitle: "Editando: " + product.name,
         });
     },
     store: function (req, res) {
