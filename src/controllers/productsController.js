@@ -34,19 +34,17 @@ const controller = {
             pageTitle: "Editando: " + product.name,
         });
     },
+
+    update: (req, res) => {
+        const id = req.params.id;
+        productService.updateOne(id, req.body);
+
+        res.redirect(`/collections/${id}`);
+    },
+
     store: function (req, res) {
-        let producto = {
-            id: Date.now(),
-            ...req.body,
-        };
-        if (req.file) {
-            producto.img = req.file.filename;
-        }
-
-        productService.products.push(producto);
-        res.redirect("/collections/" + producto.id);
-
-        productService.saveProducts();
+        productService.createOne(req.body, req.file);
+        res.redirect("/collections/");
 
         /*/ if (req.file) {
             producto.img = req.file.filename;
