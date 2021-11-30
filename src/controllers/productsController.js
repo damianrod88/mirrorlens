@@ -35,15 +35,15 @@ const controller = {
         });
     },
 
-    update: (req, res) => {
+    update: (req, res, files) => {
         const id = req.params.id;
-        productService.updateOne(id, req.body);
+        productService.updateOne(id, req.body, req.files);
 
         res.redirect(`/collections/${id}`);
     },
 
     store: function (req, res) {
-        productService.createOne(req.body, req.file);
+        productService.createOne(req.body, req.files);
         res.redirect("/collections/");
 
         /*/ if (req.file) {

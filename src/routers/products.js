@@ -23,14 +23,14 @@ router.get("/", productsController.collections);
 
 /*** CREATE ONE PRODUCT ***/
 router.get("/create", productsController.create);
-router.post("/", upload.single("img"), productsController.store);
+router.post("/", upload.array("img", 3), productsController.store);
 
 /*** GET ONE PRODUCT ***/
 router.get("/:id/", productsController.detail);
 
 /*** EDIT ONE PRODUCT ***/
 router.get("/:id/edit", productsController.edit);
-router.put("/:id", productsController.update);
+router.put("/:id", upload.array("img", 3), productsController.update);
 
 /*** DELETE ONE PRODUCT***/
 
