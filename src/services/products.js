@@ -54,4 +54,12 @@ module.exports = {
 
         saveProducts();
     },
+
+    deleteOne(id) {
+        const indice = products.findIndex((prod) => {
+            return prod.id == id;
+        });
+        products.splice(indice, 1);
+        saveProducts();
+    },
 };

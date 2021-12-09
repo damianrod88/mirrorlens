@@ -46,7 +46,7 @@
                     </div>
                     <div class="control-form">
                         <label>Correo electrónico:</label>
-                        <input type="email" name="mail"
+                        <input type="text" name="mail"
                             class="control <%= locals.errors && errors.mail ? 'is-invalid' : null %>"
                             value="<%= locals.oldData ? oldData.mail : null %>">
                         <% if (locals.errors && errors.mail) { %>

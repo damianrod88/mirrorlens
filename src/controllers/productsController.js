@@ -52,6 +52,11 @@ const controller = {
             res.redirect("/collections/" + productoId);
         }/*/
     },
+    destroy: function (req, res) {
+        const id = req.params.id;
+        productService.deleteOne(id);
+        res.redirect("/collections/");
+    },
 };
 
 module.exports = controller;
