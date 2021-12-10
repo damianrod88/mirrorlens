@@ -1,15 +1,12 @@
 const fs = require("fs");
 const path = require("path");
 
-const productsFilePath = path.join(__dirname, "../data/productsDataBase.json");
-const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
-const usersFilePath = path.join(__dirname, "../data/users.json");
-const users = JSON.parse(fs.readFileSync(usersFilePath, "utf-8"));
 const { validationResult } = require("express-validator");
-
+const userService = require("../services/users");
+const productService = require("../services/products");
 const controller = {
     home: function (req, res) {
-        res.render("home", { products });
+        res.render("home", { products: productService.products });
     },
     login: function (req, res) {
         res.render("login", {
@@ -31,11 +28,13 @@ const controller = {
     search: function (req, res) {
         let busqueda = req.query.search;
         let search = [];
-        for (let i = 0; i < products.length; i++) {
+        for (let i = 0; i < productService.products.length; i++) {
             if (
-                products[i].name.toLowerCase().includes(busqueda.toLowerCase())
+                productService.products[i].name
+                    .toLowerCase()
+                    .includes(busqueda.toLowerCase())
             ) {
-                search.push(products[i]);
+                search.push(productService.products[i]);
             }
         }
         res.render("results", { search: search });
@@ -48,18 +47,22 @@ const controller = {
                 errors: resultValidation.mapped(),
                 oldData: req.body,
             });
-        } else {
-            let usuario = {
-                id: Date.now(),
-                ...req.body,
-            };
-
-            users.push(usuario);
-
-            usuarioJSON = JSON.stringify(users, null, 2);
-            fs.writeFileSync(usersFilePath, usuarioJSON);
-            res.render("thanksForR");
         }
+
+        let userInD = userService.findByField("email", req.body.email);
+
+        if (userInD) {
+            return res.render("register", {
+                errors: {
+                    mail: {
+                        msg: "Este email ya está registrado",
+                    },
+                },
+                oldData: req.body,
+            });
+        }
+        userService.createUser(req.body);
+        return res.render("thanksForR");
     },
 };
 
