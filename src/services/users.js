@@ -31,13 +31,16 @@ module.exports = {
         return user;
     },
 
-    createUser(body) {
+    createUser(body, file) {
         let usuario = {
             id: Date.now(),
             ...body,
-            pass: bcryptjs.hashSync(body.pass, 10),
-            repass: bcryptjs.hashSync(body.repass, 10),
+            password: bcryptjs.hashSync(body.password, 10),
+            repassword: bcryptjs.hashSync(body.repassword, 10),
         };
+        if (file) {
+            usuario.img = file.filename;
+        }
 
         users.push(usuario);
 

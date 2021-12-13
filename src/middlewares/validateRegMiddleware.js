@@ -5,19 +5,22 @@ module.exports = [
     body("name")
         .notEmpty()
         .withMessage("Tienes que escribir tu nombre y apellido"),
-    body("user").notEmpty().withMessage("Tienes que escribir un usuario"),
-    body("mail")
+    body("email")
         .notEmpty()
-        .withMessage("Tienes que escribir tu mail")
+        .withMessage("Tienes que escribir tu email")
         .bail()
         .isEmail()
         .withMessage("Debes escribir un formato de correo válido"),
     body("direction")
         .notEmpty()
         .withMessage("Tienes que escribir tu dirección"),
-    body("pass").notEmpty().withMessage("Tienes que escribir una contrañesa"),
-    body("repass").notEmpty().withMessage("Tienes que escribir una contraseña"),
-    /* body("img").custom((value, { req }) => {
+    body("password")
+        .notEmpty()
+        .withMessage("Tienes que escribir una contrañesa"),
+    body("repassword")
+        .notEmpty()
+        .withMessage("Tienes que escribir una contraseña"),
+    body("img").custom((value, { req }) => {
         let file = req.file;
         let acceptedExt = [".jpg", ".png"];
         if (!file) {
@@ -32,5 +35,5 @@ module.exports = [
         }
 
         return true;
-    }),*/
+    }),
 ];
