@@ -18,13 +18,13 @@
           <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="/images/productsImage/<%= product.img %> " class="d-block w-100" alt="...">
+                <img src="<%= product.imageProducts.image1 %> " class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="/images/productsImage/<%= product.img2 %> " class="d-block w-100" alt="...">
+                <img src="<%= product.imageProducts.image2 %> " class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="/images/productsImage/<%= product.img3 %> " class="d-block w-100" alt="...">
+                <img src="<%= product.imageProducts.image3 %> " class="d-block w-100" alt="...">
               </div>
             </div>
           </div>
@@ -34,7 +34,7 @@
               <h1>
                 <%= product.name %>
               </h1>
-              <P class="price">
+              <P class="price">$
                 <%= product.price %>
               </P>
               <!-- <div class="star-description">
@@ -42,11 +42,12 @@
                 class="far fa-star"></i><i class="far fa-star"></i>
             </div> -->
               <P class="description">
-                <%= product.descr %>
+                <%= product.description %>
               </P>
 
             </div>
-            <button class="button-product" type="submit" name="comprar" id="">Agregar al carrito - <%= product.price %>
+            <button class="button-product" type="submit" name="comprar" id="">Agregar al carrito - $ <%= product.price
+                %>
             </button>
             <div>
               <a href="/collections/<%= product.id %>/edit " class="button-product-edit">Editar</a>

@@ -1,65 +1,81 @@
 const fs = require("fs");
 const path = require("path");
-
-const productsFilePath = path.join(__dirname, "../data/productsDataBase.json");
-const products = JSON.parse(fs.readFileSync(productsFilePath, "utf-8"));
-
-function saveProducts() {
-    const save = JSON.stringify(products, null, 2);
-    fs.writeFileSync(productsFilePath, save, "utf-8");
-}
+const db = require("../database/models/");
 
 module.exports = {
-    products,
-    saveProducts,
+    async getAll() {
+        return await db.Products.findAll({
+            include: [
+                {
+                    association: "imageProducts",
+                },
+            ],
+        });
+    },
 
-    createOne(body, files) {
-        let producto = {
-            id: Date.now(),
+    async createOne(body, files) {
+        let imageProduct = await db.ImageProducts.create({
+            image1: "/images/productsimage/" + files[0].filename,
+            image2: "/images/productsimage/" + files[1].filename,
+            image3: "/images/productsimage/" + files[2].filename,
+        });
+        await db.Products.create({
             ...body,
-        };
-        if (files) {
-            producto.img = files[0].filename;
-            producto.img2 = files[1].filename;
-            producto.img3 = files[2].filename;
+            image_id: imageProduct.id,
+        });
+    },
+
+    async findOne(id) {
+        return await db.Products.findByPk(id, {
+            include: [
+                {
+                    association: "imageProducts",
+                },
+            ],
+        });
+    },
+
+    async updateOne(id, body, files) {
+        try {
+            let imageProduct = await db.ImageProducts.update(
+                {
+                    ...(files[0] && {
+                        image1: "/images/productsimage/" + files[0].filename,
+                    }),
+                    ...(files[1] && {
+                        image2: "/images/productsimage/" + files[1].filename,
+                    }),
+                    ...(files[2] && {
+                        image3: "/images/productsimage/" + files[2].filename,
+                    }),
+                },
+                {
+                    where: { id: id },
+                },
+                {
+                    multi: true,
+                }
+            );
+            await db.Products.update(
+                {
+                    ...body,
+                },
+                {
+                    where: { id: id },
+                },
+                {
+                    multi: true,
+                }
+            );
+        } catch (err) {
+            console.log(err);
         }
-
-        products.push(producto);
-
-        saveProducts();
     },
 
-    findOne(id) {
-        const product = products.find((product) => {
-            return id == product.id;
+    async deleteOne(id) {
+        return await db.ImageProducts.destroy({
+            where: { id: id },
+            force: true,
         });
-        return product;
-    },
-
-    updateOne(id, body, files) {
-        const indice = products.findIndex((prod) => {
-            return prod.id == id;
-        });
-        const productoEncontrado = {
-            id: products[indice].id,
-            ...body,
-
-            if(files) {
-                productoEncontrado.img = files[0].filename;
-                productoEncontrado.img2 = files[1].filename;
-                productoEncontrado.img3 = files[2].filename;
-            },
-        };
-        products[indice] = productoEncontrado;
-
-        saveProducts();
-    },
-
-    deleteOne(id) {
-        const indice = products.findIndex((prod) => {
-            return prod.id == id;
-        });
-        products.splice(indice, 1);
-        saveProducts();
     },
 };
