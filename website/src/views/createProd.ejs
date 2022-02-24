@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./partials/head") %>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="\js\productAddValidation.js"></script>
+</head>
+
+<body>
+    <%- include("./partials/header") %>
+        <main class="container-content-login">
+            <ul class="errors"></ul>
+            <br>
+            <form action="/collections" method="post" class="create-form" enctype="multipart/form-data">
+                <div class="control-form">
+                    <input type="text" name="name" id="name" placeholder="Nombre Del Producto" class="control"
+                        <%=locals.errors && errors.name ? 'is-invalid' : null %>" value="<%= locals.oldData ?
+                        oldData.name : null %>">
+
+                        <% if (locals.errors && errors.name) { %>
+                            <p style="color: red">
+                                <%= errors.name.msg %>
+                            </p>
+                            <% } %>
+                </div>
+                <div class="control-form">
+                    <label>Imágenes del producto</label>
+                    <input type="file" name="img" id="img" multiple class="control">
+                    <% if (locals.errors && errors.img) { %>
+                        <p style="color: red">
+                            <%= errors.img.msg %>
+                        </p>
+                        <% } %>
+                </div>
+                <div class="control-form">
+
+                    <div class="control">
+                        <% types.forEach(type=> { %>
+
+                            <label>
+                                <%= type.name %>
+                            </label>
+                            <input type="radio" name="type_id" id="type_id" value="<%= type.id %>" required>
+                            <% }); %>
+                    </div>
+                </div>
+                <div class="control-form">
+                    <input type="text" name="model" id="model" placeholder="Modelo Del Producto" class="control"
+                        <%=locals.errors && errors.model ? 'is-invalid' : null %>" value="<%= locals.oldData ?
+                        oldData.model : null %>">
+
+                        <% if (locals.errors && errors.model) { %>
+                            <p style="color: red">
+                                <%= errors.model.msg %>
+                            </p>
+                            <% } %>
+                </div>
+                <div class="control-form"></div>
+                <select name="brand_id" id="brand_id" class="control-form">
+
+                    <option class="control" value="" disabled selected>- Seleccione la Marca - </option>
+                    <% brands.forEach(brand=> { %>
+                        <option value="<%= brand.id %>">
+                            <%= brand.brand %>
+                        </option>
+                        <% }); %>
+                </select>
+                </div>
+                <div class="control-form"></div>
+                <select name="gender_id" id="gender_id" class="control-form">
+
+                    <option class="control" value="" disabled selected>- Seleccione el Género - </option>
+                    <% genders.forEach(gender=> { %>
+                        <option value="<%= gender.id %>">
+                            <%= gender.name %>
+                        </option>
+                        <% }); %>
+                </select>
+                </div>
+
+                <div class="control-form">
+                    <input type="text" name="border_color" id="border_color" placeholder="Color" class="control"
+                        <%=locals.errors && errors.border_color ? 'is-invalid' : null %>" value="<%= locals.oldData ?
+                        oldData.border_color : null %>">
+
+                        <% if (locals.errors && errors.border_color) { %>
+                            <p style="color: red">
+                                <%= errors.border_color.msg %>
+                            </p>
+                            <% } %>
+                </div>
+
+
+                <div class="control-form">
+                    <input type="text" name="glass_color" id="glass_color" placeholder="Color del lente" class="control"
+                        <%=locals.errors && errors.glass_color ? 'is-invalid' : null %>" value="<%= locals.oldData ?
+                        oldData.glass_color : null %>">
+
+                        <% if (locals.errors && errors.glass_color) { %>
+                            <p style="color: red">
+                                <%= errors.glass_color.msg %>
+                            </p>
+                            <% } %>
+                </div>
+                <div class="control-form">
+                    <input type="text" name="price" id="price" placeholder="Precio $" class="control" <%=locals.errors
+                        && errors.price ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.price : null %>">
+
+                        <% if (locals.errors && errors.price) { %>
+                            <p style="color: red">
+                                <%= errors.price.msg %>
+                            </p>
+                            <% } %>
+                </div>
+                <div class="control-form">
+                    <input type="text" name="description" id="description" placeholder="Descripción del producto"
+                        class="control" <%=locals.errors && errors.description ? 'is-invalid' : null %>" value="<%=
+                        locals.oldData ? oldData.description : null %>">
+
+                        <% if (locals.errors && errors.description) { %>
+                            <p style="color: red">
+                                <%= errors.description.msg %>
+                            </p>
+                            <% } %>
+                </div>
+
+                <button type="submit" class="button-form">Publicar</button>
+
+            </form>
+        </main>
+
+        <%- include("./partials/footer") %>
+
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./partials/head") %>
+</head>
+
+<body>
+    <%- include("./partials/header") %>
+        <main class="container-content-login">
+            <form action="/collections/<%= product.id %>?_method=PUT" method="POST" class="create-form"
+                enctype="multipart/form-data">
+                <div class="control-form">
+                    <label for="description" class="form-label">Nombre:</label>
+                    <input type="text" name="name" id="name" class="control" <%=locals.errors && errors.name
+                        ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.name : product.name %>">
+                        <% if (locals.errors && errors.name) { %>
+                            <p style="color: red">
+                                <%= errors.name.msg %>
+                            </p>
+                            <% } %>
+                </div>
+                <div class="control-form">
+                    <label for="description" class="form-label">Imágenes:</label>
+                    <input type="file" name="img" multiple id="img" class="control" value="<%= product.img %>">
+                </div>
+                <div class="control-form">
+
+                    <div class="control">
+                        <% types.forEach(type=> { %>
+
+                            <label>
+                                <%= type.name %>
+                            </label>
+                            <input type="radio" name="type_id" id="type_id" value="<%= type.id %>" <% if
+                                (product.type_id==type.id) { %>
+                            <%= 'checked' %>
+                                <% }; %>>
+                                    <% }); %>
+                    </div>
+                </div>
+                <div class="control-form">
+                    <label for="description" class="form-label">Modelo:</label>
+                    <input type="text" name="model" id="model" class="control" <%=locals.errors && errors.model
+                        ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.model : product.model %>">
+                        <% if (locals.errors && errors.model) { %>
+                            <p style="color: red">
+                                <%= errors.model.msg %>
+                            </p>
+                            <% } %>
+                </div>
+                <div class="control-form">
+                    <label for="brand_id">Marca </label>
+                    <p>
+                        <select name="brand_id" id="brand_id">
+                            <% brands.forEach(brand=> { %>
+                                <option value="<%= brand.id %>" <% if (product.brand_id==brand.id) { %>
+                                    <%= 'selected' %>
+                                        <% }; %>><%= brand.brand %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </p>
+                </div>
+                <div class="control-form">
+                    <label for="gender_id">Género </label>
+                    <p>
+                        <select name="gender_id" id="gender_id">
+                            <% genders.forEach(gender=> { %>
+                                <option value="<%= gender.id %>" <% if (product.gender_id==gender.id) { %>
+                                    <%= 'selected' %>
+                                        <% }; %>><%= gender.name %>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </p>
+                </div>
+
+                <div class="control-form">
+                    <label for="description" class="form-label">Color del Borde:</label>
+                    <input type="text" name="border_color" id="border_color" class="control" <%=locals.errors &&
+                        errors.border_color ? 'is-invalid' : null %>"
+                    value="<%= locals.oldData ? oldData.border_color : product.border_color %>">
+                        <% if (locals.errors && errors.border_color) { %>
+                            <p style="color: red">
+                                <%= errors.border_color.msg %>
+                            </p>
+                            <% } %>
+                </div>
+                <div class="control-form">
+                    <label for="description" class="form-label">Color del Lente:</label>
+                    <input type="text" name="glass_color" id="glass_color" class="control" <%=locals.errors &&
+                        errors.glass_color ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.glass_color :
+                        product.glass_color %>">
+                        <% if (locals.errors && errors.glass_color) { %>
+                            <p style="color: red">
+                                <%= errors.glass_color.msg %>
+                            </p>
+                            <% } %>
+                </div>
+                <div class="control-form">
+                    <label for="price" class="form-label">Precio $:</label>
+                    <input type="text" name="price" id="price" class="control" <%=locals.errors && errors.price
+                        ? 'is-invalid' : null %>" value="<%= locals.oldData ? oldData.price : product.price %>">
+                        <% if (locals.errors && errors.price) { %>
+                            <p style="color: red">
+                                <%= errors.price.msg %>
+                            </p>
+                            <% } %>
+                </div>
+
+                <div class="control-form">
+                    <label for="description" class="form-label">Descripción:</label>
+                    <textarea name="description" id="description" class="control-descrip" <%=locals.errors &&
+                        errors.description ? 'is-invalid' : null
+                        %>"><%= locals.oldData ? oldData.description : product.description %></textarea>
+                    <% if (locals.errors && errors.description) { %>
+                        <p style="color: red">
+                            <%= errors.description.msg %>
+                        </p>
+                        <% } %>
+                </div>
+                <button type="submit" class="button-form">Guardar Edicion</button>
+
+
+            </form>
+        </main>
+
+        <%- include("./partials/footer") %>
+</body>
+
+</html>
