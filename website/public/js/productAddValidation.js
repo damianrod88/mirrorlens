@@ -89,37 +89,6 @@ window.onload = function () {
             description.classList.replace("is-invalid", "is-valid");
         }
 
-        /*
-        let awards = document.querySelector("#awards");
-        if (awards.value == "") {
-            awards.classList = "is-invalid";
-            errors.push("Los premios son obligatorios");
-        } else if (awards.value.length > 10) {
-            errors.push("Los premios deben contener menos de 10 carácteres");
-            awards.classList = "is-invalid";
-        } else {
-            awards.classList = "is-valid";
-        }
-        let releaseDate = document.querySelector("#release_date");
-        if (releaseDate.value == "") {
-            errors.push("La fecha es obligatoria");
-        }
-        let length = document.querySelector("#length");
-        if (length.value == "") {
-            length.classList = "is-invalid";
-            errors.push("La duración es obligatoria");
-        } else if (length.value < 60 || length.value > 360) {
-            errors.push(
-                "La duración tiene que estar comprendida entre 60 y 360 minutos"
-            );
-            length.classList = "is-invalid";
-        } else {
-            length.classList = "is-valid";
-        }
-        let genre = document.querySelector("#genre_id");
-        if (genre.value == "") {
-            errors.push("El género es obligatorio");
-        }*/
         if (errors.length > 0) {
             e.preventDefault();
             let ulErrors = document.querySelector("ul.errors");

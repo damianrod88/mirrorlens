@@ -3,6 +3,7 @@
 
 <head>
     <%- include("./partials/head") %>
+        <script src="\js\createValidation.js"></script>
 
 </head>
 
@@ -21,10 +22,10 @@
                 </div>
 
                 <form action="/register" method="post" class="create-form" enctype="multipart/form-data">
-
+                    <ul class="errors"></ul>
                     <div class="control-form">
                         <label>Nombre y apellido:</label>
-                        <input type="text" name="name" class="control <%= locals.errors && errors.name ? 'is-invalid' :
+                        <input type="text" name="name" id="name" class="control <%= locals.errors && errors.name ? 'is-invalid' :
                             null %>" value="<%= locals.oldData ? oldData.name : null %>">
 
                         <% if (locals.errors && errors.name) { %>
@@ -35,7 +36,7 @@
                     </div>
                     <div class="control-form">
                         <label>Imágen de perfil</label>
-                        <input type="file" name="img" class="control">
+                        <input type="file" name="img" id="img" class="control">
                         <% if (locals.errors && errors.img) { %>
                             <p style="color: red">
                                 <%= errors.img.msg %>
@@ -44,7 +45,7 @@
                     </div>
                     <div class="control-form">
                         <label>Correo electrónico:</label>
-                        <input type="text" name="email"
+                        <input type="text" name="email" id="email"
                             class="control <%= locals.errors && errors.email ? 'is-invalid' : null %>"
                             value="<%= locals.oldData ? oldData.email : null %>">
                         <% if (locals.errors && errors.email) { %>
@@ -56,7 +57,7 @@
 
                     <div class="control-form">
                         <label>Domicilio:</label>
-                        <input type="text" name="direction"
+                        <input type="text" name="direction" id="direction"
                             class="control <%= locals.errors && errors.direction ? 'is-invalid' : null %>"
                             value="<%= locals.oldData ? oldData.direction : null %>">
                         <% if (locals.errors && errors.direction) { %>
@@ -69,7 +70,7 @@
 
                     <div class="control-form">
                         <label>Contraseña:</label>
-                        <input type="password" name="password"
+                        <input type="password" name="password" id="password"
                             class="control <%= locals.errors && errors.password ? 'is-invalid' : null %>">
                         <% if (locals.errors && errors.password) { %>
                             <p style="color: red">
@@ -79,7 +80,7 @@
                     </div>
                     <div class="control-form">
                         <label>Confirmar Contraseña:</label>
-                        <input type="password" name="repassword"
+                        <input type="password" name="repassword" id="repassword"
                             class="control <%= locals.errors && errors.repassword ? 'is-invalid' : null %>">
                         <% if (locals.errors && errors.repassword) { %>
                             <p style="color: red">
