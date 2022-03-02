@@ -36,13 +36,15 @@
                 <div class="control-form">
 
                     <div class="control">
-                        <% types.forEach(type=> { %>
+                        <% for( let i=0; i < types.length; i++ ) { %>
+
+
 
                             <label>
-                                <%= type.name %>
+                                <%= types[i].name %>
                             </label>
-                            <input type="radio" name="type_id" id="type_id" value="<%= type.id %>" required>
-                            <% }); %>
+                            <input type="radio" name="type_id" id="type_id_<%= i %>" value="<%= types[i].id %>">
+                            <% } %>
                     </div>
                 </div>
                 <div class="control-form">

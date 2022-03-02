@@ -25,14 +25,17 @@ window.onload = function () {
             img.classList.replace("is-invalid", "is-valid");
         }
 
-        let type = document.querySelector("#type_id");
+        let type = document.querySelector("#type_id_0");
+        let type1 = document.querySelector("#type_id_1");
 
-        /*if (!type.checked) {
+        if (!(type.checked || type1.checked)) {
             type.classList.add("is-invalid");
+            type1.classList.add("is-invalid");
             errors.push("Selecciona un tipo de lente");
         } else {
             type.classList.replace("is-invalid", "is-valid");
-        }*/
+            type1.classList.replace("is-invalid", "is-valid");
+        }
 
         let model = document.querySelector("#model");
         if (model.value == "") {
