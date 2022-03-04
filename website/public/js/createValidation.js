@@ -49,7 +49,7 @@ window.onload = function () {
             password.classList.replace("is-invalid", "is-valid");
             repassword.classList.replace("is-invalid", "is-valid");
         }
-
+        let btn = document.querySelector("button.button-form");
         if (errors.length > 0) {
             e.preventDefault();
             let ulErrors = document.querySelector("ul.errors");
@@ -57,18 +57,22 @@ window.onload = function () {
             for (let i = 0; i < errors.length; i++) {
                 ulErrors.innerHTML += "<li>" + errors[i] + "</li>";
             }
-            let btn = document.querySelector("button.button-form");
+
             btn.onclick = function () {
                 ulErrors.innerHTML = "";
             };
         } else {
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Se creo correctamente",
-                showConfirmButton: false,
-                timer: 1500,
-            });
+            btn.onclick = alert();
+            function alert() {
+                e.preventDefault();
+                Swal.fire(
+                    `Bienvenido ${name.value}!`,
+                    "Gracias por registrarte!",
+                    "success"
+                ).then(() => {
+                    form.submit();
+                });
+            }
         }
     });
 };

@@ -30,6 +30,7 @@ module.exports = {
         });
         await db.Products.create({
             ...body,
+            id: imageProduct.id,
             image_id: imageProduct.id,
             brand_id: body.brand_id,
             gender_id: body.gender_id,

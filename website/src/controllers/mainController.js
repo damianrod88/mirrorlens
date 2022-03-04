@@ -102,7 +102,10 @@ const controller = {
                 oldData: req.body,
             });
         }
-
+        const usuario = await db.Users.findAll({
+            order: [["id", "DESC"]],
+            limit: 1,
+        });
         let userInD = await userService.findByField(req.body.email);
 
         if (userInD) {
@@ -116,7 +119,7 @@ const controller = {
             });
         }
         await userService.createUser(req.body, req.file);
-        return res.render("thanksForR");
+        return res.render("thanksForR", { usuario: usuario });
     },
     logout: (req, res) => {
         res.clearCookie("userEmail");

@@ -8,6 +8,12 @@ module.exports = {
         const user = await db.Users.findByPk(id);
         return user;
     },
+    async findLast() {
+        return await db.Users.findAll({
+            order: [["id", "DESC"]],
+            limit: 1,
+        });
+    },
     async findByField(text) {
         try {
             const user = await db.Users.findOne({
