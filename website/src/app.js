@@ -9,6 +9,7 @@ const apiProductsRouter = require("./routers/api/product");
 const methodOverride = require("method-override");
 const userLoggedMiddleware = require("./middlewares/userLoggedMiddleware");
 const cookies = require("cookie-parser");
+const cors = require("cors");
 
 const publicPath = path.join(__dirname, "../public");
 app.use(
@@ -16,6 +17,11 @@ app.use(
         secret: "Shh, a secret",
         resave: false,
         saveUninitialized: false,
+    })
+);
+app.use(
+    cors({
+        origin: "http://localhost:3000",
     })
 );
 app.use(cookies());

@@ -80,5 +80,52 @@ const mainApiController = {
             res.json(respuesta);
         });
     },
+    email: async (req, res) => {
+        let email = req.query.email;
+        const user = await db.Users.findOne({
+            where: {
+                email: email,
+            },
+        });
+        const response = {
+            meta: {
+                status: 200,
+                total: 1,
+                url: "/api/users/email",
+            },
+            data: user,
+        };
+        res.json(response);
+    },
+    last: async (req, res) => {
+        const user = await db.Users.findAll({
+            order: [["id", "DESC"]],
+            limit: 1,
+        });
+        const response = {
+            meta: {
+                status: 200,
+                total: 1,
+                url: "/api/users/last",
+            },
+            data: user,
+        };
+        res.json(response);
+    },
+    lastFive: async (req, res) => {
+        const user = await db.Users.findAll({
+            order: [["id", "DESC"]],
+            limit: 5,
+        });
+        const response = {
+            meta: {
+                status: 200,
+                total: 1,
+                url: "/api/users/lastfive",
+            },
+            data: user,
+        };
+        res.json(response);
+    },
 };
 module.exports = mainApiController;
