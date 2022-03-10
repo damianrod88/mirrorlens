@@ -2,11 +2,39 @@ window.onload = function () {
     let name = document.querySelector("#name");
     name.focus();
 
+    getDevices = async (email) => {
+        const fetchResponse = await fetch(
+            `http://localhost:3001/api/users/email?email=${email}`
+        );
+        const data = await fetchResponse.json();
+        return data;
+    };
     let form = document.querySelector("form.create-form");
-    form.addEventListener("submit", function (e) {
+
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        let img = document.querySelector("#img");
         let email = document.querySelector("#email");
+        let direction = document.querySelector("#direction");
+        let repassword = document.querySelector("#repassword");
+        let password = document.querySelector("#password");
+        let btn = document.querySelector("button.button-form");
         let errors = [];
-        const url = `http://localhost:3001/api/users/email?email=${email.value}`;
+
+        console.log(await getDevices());
+
+        /* fetch(url)
+            .then((res) => res.json())
+            .then(function (res) {
+                if (res.data !== null) {
+                    email.classList.add("is-invalid");
+                    errors.push("ya hay un usuario");
+                    console.log(errors);
+                } else {
+                    email.classList.replace("is-invalid", "is-valid");
+                }
+            }); */
+
         /* fetch(url)
             .then((res) => res.json())
             .then(function (res) {
@@ -25,29 +53,29 @@ window.onload = function () {
                 if (user !== null) {
                     errores.push(
                         "Ya hay un usuario registrado con este correo electrónico"
-                    );
-                    errors.push(errores[0]);
-                    console.log(errors);
-                }
-            }); */
-        /* fetch("http://localhost:3001/api/users/?page=0&limit=1000")
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (mail) {
-                console.log(mail.data);
-                let mailDb = mail.data;
-
-                for (let i = 0; i < mailDb.length; i++) {
-                    if (email.value == mailDb[i].email) {
-                        email.classList.add("is-invalid");
-                        errors.push("El mail ya está registrado");
+                        );
+                        errors.push(errores[0]);
+                        console.log(errors);
                     }
-                }
-
-                console.log(errors);
-            });
- */
+                }); */
+        /* fetch("http://localhost:3001/api/users/?page=0&limit=1000")
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (mail) {
+                    console.log(mail.data);
+                    let mailDb = mail.data;
+                    
+                    for (let i = 0; i < mailDb.length; i++) {
+                        if (email.value == mailDb[i].email) {
+                            email.classList.add("is-invalid");
+                            errors.push("El mail ya está registrado");
+                        }
+                    }
+                    
+                    console.log(errors);
+                });
+                */
 
         if (name.value == "") {
             name.classList.add("is-invalid");
@@ -56,7 +84,6 @@ window.onload = function () {
             name.classList.replace("is-invalid", "is-valid");
         }
 
-        let img = document.querySelector("#img");
         if (img.value == "") {
             img.classList.add("is-invalid");
             errors.push("Sube un imágen");
@@ -64,32 +91,13 @@ window.onload = function () {
             img.classList.replace("is-invalid", "is-valid");
         }
 
-        if (email.value == "") {
-            email.classList.add("is-invalid");
-            errors.push("Escribe un email");
-        } else {
-            e.preventDefault();
-            fetch(url)
-                .then((res) => res.json())
-                .then(function (res) {
-                    if (res.data !== null) {
-                        email.classList.add("is-invalid");
-                        errors.push("ya hay un usuario");
-                    }
-                    email.classList.replace("is-invalid", "is-valid");
-                    form.submit();
-                });
-        }
-
-        let direction = document.querySelector("#direction");
         if (direction.value == "") {
             direction.classList.add("is-invalid");
             errors.push("Escribe tu dirección");
         } else {
             direction.classList.replace("is-invalid", "is-valid");
         }
-        let repassword = document.querySelector("#repassword");
-        let password = document.querySelector("#password");
+
         if (password.value == "" && repassword.value == "") {
             password.classList.add("is-invalid");
             repassword.classList.add("is-invalid");
@@ -102,10 +110,20 @@ window.onload = function () {
             password.classList.replace("is-invalid", "is-valid");
             repassword.classList.replace("is-invalid", "is-valid");
         }
-        let btn = document.querySelector("button.button-form");
+
+        if (email.value == "") {
+            email.classList.add("is-invalid");
+            errors.push("Escribe un email");
+        } else if ((await getDevices(email.value)).data !== null) {
+            email.classList.add("is-invalid");
+            errors.push("Ya existe un usuario con ese correo");
+        } else {
+            email.classList.replace("is-invalid", "is-valid");
+        }
+
         if (errors.length > 0) {
             console.log(errors);
-            e.preventDefault();
+
             let ulErrors = document.querySelector("ul.errors");
             ulErrors.classList.add("alert-warning");
             for (let i = 0; i < errors.length; i++) {
