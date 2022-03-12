@@ -9,8 +9,8 @@ window.onload = function () {
         const data = await fetchResponse.json();
         return data;
     };
-    let form = document.querySelector("form.create-form");
 
+    let form = document.querySelector("form.create-form");
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
         let img = document.querySelector("#img");
@@ -19,65 +19,13 @@ window.onload = function () {
         let repassword = document.querySelector("#repassword");
         let password = document.querySelector("#password");
         let btn = document.querySelector("button.button-form");
+        const pattern =
+            /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()+=-\?;,./{}|\":<>\[\]\\\' ~_]).{8,}/;
+        const re =
+            /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         let errors = [];
 
-        console.log(await getDevices());
-
-        /* fetch(url)
-            .then((res) => res.json())
-            .then(function (res) {
-                if (res.data !== null) {
-                    email.classList.add("is-invalid");
-                    errors.push("ya hay un usuario");
-                    console.log(errors);
-                } else {
-                    email.classList.replace("is-invalid", "is-valid");
-                }
-            }); */
-
-        /* fetch(url)
-            .then((res) => res.json())
-            .then(function (res) {
-                if (res.data !== null) {
-                    errors.push("ya hay un usuario");
-                }
-            }) */
-
-        /*  fetch(`http://localhost:3001/api/users/email?email=${email.value}`)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (mail) {
-                let errores = [];
-                let user = mail.data;
-                if (user !== null) {
-                    errores.push(
-                        "Ya hay un usuario registrado con este correo electrónico"
-                        );
-                        errors.push(errores[0]);
-                        console.log(errors);
-                    }
-                }); */
-        /* fetch("http://localhost:3001/api/users/?page=0&limit=1000")
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (mail) {
-                    console.log(mail.data);
-                    let mailDb = mail.data;
-                    
-                    for (let i = 0; i < mailDb.length; i++) {
-                        if (email.value == mailDb[i].email) {
-                            email.classList.add("is-invalid");
-                            errors.push("El mail ya está registrado");
-                        }
-                    }
-                    
-                    console.log(errors);
-                });
-                */
-
-        if (name.value == "") {
+        if (name.value.trim() == "") {
             name.classList.add("is-invalid");
             errors.push("El nombre es obligatorio");
         } else {
@@ -91,7 +39,20 @@ window.onload = function () {
             img.classList.replace("is-invalid", "is-valid");
         }
 
-        if (direction.value == "") {
+        if (email.value == "") {
+            email.classList.add("is-invalid");
+            errors.push("Escribe un email");
+        } else if (!email.value.match(re)) {
+            email.classList.add("is-invalid");
+            errors.push("Escribe un email válido");
+        } else if ((await getDevices(email.value)).data !== null) {
+            email.classList.add("is-invalid");
+            errors.push("Ya está registrado ese correo");
+        } else {
+            email.classList.replace("is-invalid", "is-valid");
+        }
+
+        if (direction.value.trim() == "") {
             direction.classList.add("is-invalid");
             errors.push("Escribe tu dirección");
         } else {
@@ -103,22 +64,17 @@ window.onload = function () {
             repassword.classList.add("is-invalid");
             errors.push("Escribe tu contraseña");
             errors.push("Confirma la contraseña");
+        } else if (!pattern.test(password.value)) {
+            password.classList.add("is-invalid");
+            errors.push(
+                "La contraseña debe tener un mínimo de 8 carácteres incluyendo un número, una minúscula, una mayúscula y un caracter especial."
+            );
         } else if (password.value != repassword.value) {
             password.classList.add("is-invalid");
             errors.push("Las contraseñas no son iguales");
         } else {
             password.classList.replace("is-invalid", "is-valid");
             repassword.classList.replace("is-invalid", "is-valid");
-        }
-
-        if (email.value == "") {
-            email.classList.add("is-invalid");
-            errors.push("Escribe un email");
-        } else if ((await getDevices(email.value)).data !== null) {
-            email.classList.add("is-invalid");
-            errors.push("Ya existe un usuario con ese correo");
-        } else {
-            email.classList.replace("is-invalid", "is-valid");
         }
 
         if (errors.length > 0) {

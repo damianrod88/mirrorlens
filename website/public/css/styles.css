@@ -215,6 +215,7 @@ body {
     text-align: center;
     border-radius: 10px;
     list-style: none;
+    font-weight: bold;
 }
 
 .control-descrip {

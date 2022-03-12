@@ -4,12 +4,7 @@ window.onload = function () {
 
     let form = document.querySelector("form.create-form");
     form.addEventListener("submit", function (e) {
-        let brand = document.querySelector("#brand_id");
-        let img = document.querySelector("#img");
-        let type = document.querySelector("#type_id_0");
-        let type1 = document.querySelector("#type_id_1");
         let model = document.querySelector("#model");
-        let gender = document.querySelector("#gender_id");
         let borderColor = document.querySelector("#border_color");
         let glassColor = document.querySelector("#glass_color");
         let price = document.querySelector("#price");
@@ -24,42 +19,11 @@ window.onload = function () {
             name.classList.replace("is-invalid", "is-valid");
         }
 
-        if (img.value == "") {
-            img.classList.add("is-invalid");
-            errors.push("Sube las imágenes");
-        } else if (img.files.length != 3) {
-            errors.push("Sube 3 imágenes");
-            img.classList.add("is-invalid");
-        } else {
-            img.classList.replace("is-invalid", "is-valid");
-        }
-
-        if (!(type.checked || type1.checked)) {
-            type.classList.add("is-invalid");
-            type1.classList.add("is-invalid");
-            errors.push("Selecciona un tipo de lente");
-        } else {
-            type.classList.replace("is-invalid", "is-valid");
-            type1.classList.replace("is-invalid", "is-valid");
-        }
-
         if (model.value.trim() == "") {
             model.classList.add("is-invalid");
             errors.push("Escribe el modelo de lente");
         } else {
             model.classList.replace("is-invalid", "is-valid");
-        }
-        if (brand.value == "") {
-            brand.classList.add("is-invalid");
-            errors.push("Selecciona la marca");
-        } else {
-            brand.classList.replace("is-invalid", "is-valid");
-        }
-        if (gender.value == "") {
-            gender.classList.add("is-invalid");
-            errors.push("Selecciona el género");
-        } else {
-            gender.classList.replace("is-invalid", "is-valid");
         }
 
         if (borderColor.value.trim() == "") {
@@ -107,7 +71,7 @@ window.onload = function () {
                 e.preventDefault();
                 Swal.fire(
                     "Excelente!",
-                    `Se guardó ${name.value}`,
+                    `Se modificó ${name.value}`,
                     "success"
                 ).then(() => {
                     form.submit();
