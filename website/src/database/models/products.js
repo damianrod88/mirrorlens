@@ -16,6 +16,7 @@ module.exports = function (sequelize, dataTypes) {
         brand_id: { type: dataTypes.BIGINT(10).UNSIGNED },
         gender_id: { type: dataTypes.BIGINT(10).UNSIGNED },
         type_id: { type: dataTypes.BIGINT(10).UNSIGNED },
+        inCart: { type: dataTypes.INTEGER },
     };
     let config = {
         tableName: "products",

@@ -58,16 +58,16 @@
                             </p>
                             <% } %>
                 </div>
-                <div class="control-form"></div>
-                <select name="brand_id" id="brand_id" class="control-form">
+                <div class="control-form">
+                    <select name="brand_id" id="brand_id" class="control-form">
 
-                    <option class="control" value="" disabled selected>- Seleccione la Marca - </option>
-                    <% brands.forEach(brand=> { %>
-                        <option value="<%= brand.id %>">
-                            <%= brand.brand %>
-                        </option>
-                        <% }); %>
-                </select>
+                        <option class="control" value="" disabled selected>- Seleccione la Marca - </option>
+                        <% brands.forEach(brand=> { %>
+                            <option value="<%= brand.id %>">
+                                <%= brand.brand %>
+                            </option>
+                            <% }); %>
+                    </select>
                 </div>
                 <div class="control-form"></div>
                 <select name="gender_id" id="gender_id" class="control-form">

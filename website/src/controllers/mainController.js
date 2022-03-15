@@ -27,6 +27,10 @@ const controller = {
             );
             if (passwordOk) {
                 req.session.userLogged = userToLogin;
+
+                if (req.session.userLogged.dataValues.admin == 1) {
+                    req.session.admin = userToLogin;
+                }
                 if (req.body.remember) {
                     res.cookie("userEmail", req.body.email, {
                         maxAge: 1000 * 60 * 2,
@@ -47,6 +51,7 @@ const controller = {
 
         return res.render("login", {
             pageTitle: "Ingresa",
+            admin,
             errors: {
                 email: {
                     msg: "Este email no está registrado",
@@ -66,9 +71,10 @@ const controller = {
         });
     },
 
-    cart: function (req, res) {
+    cart: async function (req, res) {
         res.render("cart", {
             pageTitle: "Carrito",
+            product: await productService.getAll(),
         });
     },
     cartProcess: async function (req, res) {

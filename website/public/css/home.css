@@ -56,7 +56,7 @@
 .block-shop-for-women {
     width: inherit;
     height: 400px;
-    background-image: url(/images/bc-women-block.jpg);
+    background-image: url(/images/her.jpg);
     background-repeat: no-repeat;
     background-size: 100% 400px;
     position: relative;
@@ -64,19 +64,28 @@
 .block-shop-for-men {
     width: inherit;
     height: 400px;
-    background-image: url(/images/bc-men-block.jpg);
+    background-image: url(/images/david-beckham-eyewear.jpg);
     background-repeat: no-repeat;
     background-size: 100% 400px;
     position: relative;
 }
-.block-shop-do-it {
+.block-shop-all {
     width: inherit;
     height: 400px;
-    background-image: url(/images/do-it-your-own-block.jpg);
+    background-image: url(/images/all.jpg);
     background-repeat: no-repeat;
     background-size: 100% 400px;
     position: relative;
-    max-width: 500px;
+    max-width: 400px;
+}
+.block-shop-do-it {
+    width: inherit;
+    height: 400px;
+    background-image: url(/images/unisex.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 400px;
+    position: relative;
+    max-width: 400px;
 }
 
 .block-shop-do-it-tablet {
@@ -94,6 +103,7 @@
     color: black;
     font-size: 36px;
     font-weight: bolder;
+    margin-top: 0px !important;
 }
 
 .block-p {

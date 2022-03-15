@@ -8,6 +8,7 @@ const apiMainRouter = require("./routers/api/users");
 const apiProductsRouter = require("./routers/api/product");
 const methodOverride = require("method-override");
 const userLoggedMiddleware = require("./middlewares/userLoggedMiddleware");
+const adminMiddleware = require("./middlewares/adminMiddleware");
 const cookies = require("cookie-parser");
 const cors = require("cors");
 
@@ -26,6 +27,7 @@ app.use(
 );
 app.use(cookies());
 app.use(userLoggedMiddleware);
+app.use(adminMiddleware);
 app.use(express.static(publicPath));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));

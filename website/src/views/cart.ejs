@@ -2,28 +2,82 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="/css/cart.css" type="text/css" />
     <%- include("./partials/head") %>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"
+            id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
 </head>
 
+
 <body>
+
     <%- include("./partials/header") %>
         <section>
             <main class="cart-content">
                 <div class="cart-header">
                     <h1>Tu carrito</h1>
-                    <a href="/">Seguir comprando ></a>
+
                 </div>
 
-                <div class="cartitems">
-                    <p>Tu carrito está vacío</p>
-                    <a href="/">
-                        <i class="fas fa-shopping-cart icon-shop"></i>Seguir comprando
-                    </a>
+                <div class="container">
+
+                    <table id="cart" class="table table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th style="width:50%">Product</th>
+                                <th style="width:10%">Price</th>
+                                <th style="width:8%">Quantity</th>
+                                <th style="width:22%" class="text-center">Subtotal</th>
+                                <th style="width:10%"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                        <tfoot>
+
+                            <tr>
+                                <td><a href="/collections" class="btn btn-warning"><i class="fa fa-angle-left"></i>
+                                        Continue
+                                        Shopping</a></td>
+                                <td colspan="2" class="hidden-xs"></td>
+                                <td class="hidden-xs text-center total"><strong>Total $0</strong></td>
+                                <td><a href="#" class="btn btn-success btn-block">Checkout <i
+                                            class="fa fa-angle-right"></i></a></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+
                 </div>
 
             </main>
+
             <%- include("./partials/footer") %>
+
+                <script src="/js/script.js"></script>
+                <script>
+                    function delete1(e) {
+                        console.log(e.parentElement.parentElement.children[1].textContent);
+                        let items = []
+                        let cartItems = localStorage.getItem("productsInCart");
+                        cartItems = JSON.parse(cartItems);
+                        Object.values(cartItems).map((item) => {
+                            if (item.id != e.parentElement.parentElement.children[1].textContent) {
+                                items.push(item)
+                            }
+                        })
+                        localStorage.setItem(
+                            "productsInCart",
+                            JSON.stringify(items))
+                        window.location.reload()
+
+                    }
+                </script>
 
 </body>
 

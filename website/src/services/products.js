@@ -9,7 +9,52 @@ module.exports = {
                 {
                     association: "imageProducts",
                 },
+                {
+                    association: "Gender",
+                },
             ],
+        });
+    },
+    async getAllMen() {
+        return await db.Products.findAll({
+            include: [
+                {
+                    association: "imageProducts",
+                },
+                {
+                    association: "Gender",
+                },
+            ],
+
+            where: { gender_id: 1 },
+        });
+    },
+    async getAllWomen() {
+        return await db.Products.findAll({
+            include: [
+                {
+                    association: "imageProducts",
+                },
+                {
+                    association: "Gender",
+                },
+            ],
+
+            where: { gender_id: 2 },
+        });
+    },
+    async getAllUnisex() {
+        return await db.Products.findAll({
+            include: [
+                {
+                    association: "imageProducts",
+                },
+                {
+                    association: "Gender",
+                },
+            ],
+
+            where: { gender_id: 3 },
         });
     },
     async getBrands() {

@@ -5,9 +5,33 @@ const { validationResult } = require("express-validator");
 
 const controller = {
     collections: async function (req, res) {
+        let brands = await productService.getBrands();
         res.render("collections", {
             products: await productService.getAll(),
             pageTitle: "Productos - Mirrorlens",
+            name: "Lentes de sol",
+            brands: brands,
+        });
+    },
+    women: async function (req, res) {
+        res.render("collections", {
+            products: await productService.getAllWomen(),
+            pageTitle: "For women - Mirrorlens",
+            name: "Lentes de Mujer",
+        });
+    },
+    men: async function (req, res) {
+        res.render("collections", {
+            products: await productService.getAllMen(),
+            pageTitle: "For men - Mirrorlens",
+            name: "Lentes de Hombre",
+        });
+    },
+    unisex: async function (req, res) {
+        res.render("collections", {
+            products: await productService.getAllUnisex(),
+            pageTitle: "Unisex - Mirrorlens",
+            name: "Lentes Unisex",
         });
     },
 
@@ -15,6 +39,7 @@ const controller = {
         const id = req.params.id;
 
         const product = await productService.findOne(id);
+        res.locals.product = product;
         if (product) {
             res.render("detail", {
                 product,

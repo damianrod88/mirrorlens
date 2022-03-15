@@ -50,9 +50,9 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="<%=`/collections` %>"">Shop</a>
                             </li>
-                            </li>
-                        </ul>
-                        <form class=" d-flex" action="/search" method="get">
+                        </li>
+                    </ul>
+                    <form class=" d-flex" action="/search" method="get">
                                     <input class="form-control me-2" type="text" placeholder="Buscar"
                                         aria-label="Search" name="search">
                                     <button class="btn btn-outline-success button-head" type="submit">Buscar</button>
@@ -61,40 +61,46 @@
                 </div>
             </div>
         </nav>
-        <div class="right-icon-menu">
-            <a href="/cart">
-                <i class="fas fa-shopping-cart icon-shop"></i>
-            </a>
-        </div>
+        <div class="barra">
+            <div class="right-icon-menu-desktop">
 
-        <div class="right-icon-menu-desktop">
-
-            <div class="collapse" id="navbarToggleExternalContent">
-                <div class="bg-dark p-4">
-                    <form class="searchDesktop" action="/search" method="get">
-                        <input class="form-control me-2" type="text" placeholder="Buscar" aria-label="Search"
-                            name="search">
-                        <button class="btn btn-outline-success button-head" type="submit">Buscar</button>
-                    </form>
+                <div class="collapse" id="navbarToggleExternalContent">
+                    <div class="bg-dark p-4">
+                        <form class="searchDesktop" action="/search" method="get">
+                            <input class="form-control me-2" type="text" placeholder="Buscar" aria-label="Search"
+                                name="search">
+                            <button class="btn btn-outline-success button-head" type="submit">Buscar</button>
+                        </form>
+                    </div>
                 </div>
+                <nav>
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fas fa-search icon-search"></i>
+                        </button>
+                    </div>
+                </nav>
+
+                <% if (locals.isLogged) { %>
+                    <a href="/profile"><i class="far fa-user icon-search"></i></a>
+                    <% } %>
+
+
             </div>
-            <nav>
-                <div class="container-fluid">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-search icon-search"></i>
-                    </button>
+            <div class="right-icon-menu ">
+                <div class="cart">
+
+                    <a href="/cart"><i class="fas fa-shopping-cart icon-shop"></i><span class="icon-shop">0</span></a>
                 </div>
-            </nav>
-            <i class="far fa-heart icon-search"></i>
-            <% if (locals.isLogged) { %>
-                <a href="/profile"><i class="far fa-user icon-search"></i></a>
-                <% } %>
-                    <a href="/cart">
-                        <i class="fas fa-shopping-cart icon-shop"></i>
-                    </a>
+
+            </div>
+
         </div>
+
 
     </div>
+
+
 </header>

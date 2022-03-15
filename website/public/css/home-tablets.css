@@ -21,6 +21,11 @@
         max-width: 500px;
         margin: 20px;
     }
+    .block-shop-all {
+        min-height: 330px;
+        max-width: 500px;
+        margin: 20px;
+    }
 
     .div-slider {
         margin-top: 140px;

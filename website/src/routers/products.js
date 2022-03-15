@@ -8,6 +8,9 @@ const validateUpdMiddleware = require("../middlewares/validateUpdMiddleware");
 
 /*** GET ALL PRODUCTS ***/
 router.get("/", productsController.collections);
+router.get("/men", productsController.men);
+router.get("/women", productsController.women);
+router.get("/unisex", productsController.unisex);
 
 /*** CREATE ONE PRODUCT ***/
 router.get("/create", productsController.create);

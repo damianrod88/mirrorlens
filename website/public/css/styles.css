@@ -104,6 +104,11 @@ body {
     position: relative;
     order: 1;
 }
+.barra {
+    order: 3;
+    display: inline-flex;
+    align-items: center;
+}
 .right-icon-menu {
     padding: 5px 0px;
     display: inline-block;
@@ -444,3 +449,5 @@ body {
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
 }
+
+/* shopping cart */
