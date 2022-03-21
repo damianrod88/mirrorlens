@@ -1,9 +1,4 @@
 let carts = document.querySelectorAll(".add-cart");
-/* getDevices = async () => {
-    const fetchResponse = await fetch(`http://localhost:3001/api/products`);
-    const data = await fetchResponse.json();
-    return data.data;
-}; */
 fetch(`http://localhost:3001/api/products`)
     .then(function (response) {
         return response.json();
@@ -24,12 +19,12 @@ fetch(`http://localhost:3001/api/products`)
             }
         }
         function cartNumbers(product) {
-            console.log(product);
+            /* console.log(product); */
             let productNumbers = localStorage.getItem("cartNumbers");
-            console.log(productNumbers);
+            /* console.log(productNumbers); */
 
             productNumbers = parseInt(productNumbers);
-            console.log(typeof productNumbers);
+            /* console.log(typeof productNumbers); */
             if (productNumbers) {
                 localStorage.setItem("cartNumbers", productNumbers + 1);
                 document.querySelector(".cart span").textContent =
@@ -65,7 +60,7 @@ fetch(`http://localhost:3001/api/products`)
         }
         function totalCost(product) {
             let cartCost = localStorage.getItem("totalCost");
-            console.log(cartCost);
+            /* console.log(cartCost); */
             if (cartCost != null) {
                 cartCost = parseInt(cartCost);
                 product.price = parseInt(product.price);
@@ -74,18 +69,12 @@ fetch(`http://localhost:3001/api/products`)
                 localStorage.setItem("totalCost", product.price);
             }
         }
-        /* let delete2 = document.querySelector("#idDelete"); */
-
-        /* delete1.addEventListener("click", function () {
-            e.closest('tr').remove();
-                        window.location.reload()
-        });
- */
+        /* document.querySelector("#idDelete").addEventListener("click", delete1, false); */
         function displayCart() {
             let cartItems = localStorage.getItem("productsInCart");
             cartItems = JSON.parse(cartItems);
             let productContainer = document.querySelector("tbody");
-            console.log(cartItems);
+            /* console.log(cartItems); */
             let cartCost = localStorage.getItem("totalCost");
             let total = document.querySelector(".total");
             if (cartItems && productContainer) {
@@ -95,7 +84,7 @@ fetch(`http://localhost:3001/api/products`)
                     productContainer.innerHTML += `
                     
 					<tbody>
-						<tr>
+						<tr >
 							<td data-th="Product">
 								<div class="row">
 									<div class="col-sm-2 hidden-xs"><img src=${
@@ -109,10 +98,23 @@ fetch(`http://localhost:3001/api/products`)
 									</div>
 								</div>
 							</td>
-							<td class ="d-none">${item.id}</td>
-							<td data-th="Price">${item.price}</td>
-							<td data-th="Quantity">
-								<input type="number" class="form-control text-center" value="${item.inCart}">
+							<td class ="d-none" >${item.id}</td>
+							<td data-th="Price">$${item.price}</td>
+							<td data-th="Quantity" >
+                                <div class="cart-quantity">
+                                
+								<i class="fa fa-minus-circle cart-minus" id="${
+                                    item.id
+                                }" aria-hidden="true" ></i>
+                                
+                                
+                                <span >${item.inCart}</span>
+                                
+                                <i class="fa fa-plus-circle cart-plus" id="${
+                                    item.id
+                                }"aria-hidden="true" ></i>
+                                </div>
+                            
 							</td>
 							<td data-th="Subtotal" class="text-center">$${item.inCart * item.price}</td>
 							<td class="actions" data-th="">

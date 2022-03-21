@@ -80,6 +80,7 @@ module.exports = {
             brand_id: body.brand_id,
             gender_id: body.gender_id,
             type_id: body.type_id,
+            inCart: 0,
         });
     },
 

@@ -75,7 +75,7 @@ function SearchProducts() {
                                                     alt={product.name}
                                                     style={{
                                                         width: "90%",
-                                                        height: "130px",
+                                                        height: "110px",
                                                         objectFit: "cover",
                                                     }}
                                                 />

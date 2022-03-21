@@ -30,6 +30,7 @@ module.exports = {
             ...body,
             password: bcryptjs.hashSync(body.password, 10),
             repassword: bcryptjs.hashSync(body.repassword, 10),
+            admin: 0,
             ...(file && {
                 photo_user: "/images/productsimage/" + file.filename,
             }),
