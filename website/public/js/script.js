@@ -69,7 +69,7 @@ fetch(`http://localhost:3001/api/products`)
                 localStorage.setItem("totalCost", product.price);
             }
         }
-        /* document.querySelector("#idDelete").addEventListener("click", delete1, false); */
+
         function displayCart() {
             let cartItems = localStorage.getItem("productsInCart");
             cartItems = JSON.parse(cartItems);
@@ -119,8 +119,8 @@ fetch(`http://localhost:3001/api/products`)
 							<td data-th="Subtotal" class="text-center">$${item.inCart * item.price}</td>
 							<td class="actions" data-th="">
 								
-								<a href="#" class="btn btn-danger btn-sm" onClick = "delete1(this)"
-                                id="idDelete"value= "${
+								<a href="#" class="btn btn-danger btn-sm idelete" 
+                                id="${
                                     item.id
                                 }"><i class="fa fa-trash-o"></i></a>								
 							</td>

@@ -61,4 +61,58 @@ window.onload = function () {
             localStorage.setItem("productsInCart", JSON.stringify(cartItems));
         });
     }
+    let iDelete = document.getElementsByClassName("idelete");
+    for (let i = 0; i < iDelete.length; i++) {
+        let button = iDelete[i];
+        button.addEventListener("click", function (e) {
+            e.preventDefault;
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        "Deleted!",
+                        "Your file has been deleted.",
+                        "success"
+                    );
+                }
+            });
+            let items = [];
+
+            let productNumbers = localStorage.getItem("cartNumbers");
+            let cartItems = localStorage.getItem("productsInCart");
+            let cartCost = localStorage.getItem("totalCost");
+
+            items.price = parseInt(items.price);
+            cartItems = JSON.parse(cartItems);
+            let item = Object.values(cartItems);
+            for (let i = 0; i < item.length; i++) {
+                let newItem = item[i];
+                if (button.id != newItem.id) {
+                    items.push(item[i]);
+                } else if (button.id == newItem.id) {
+                    localStorage.setItem(
+                        "totalCost",
+                        cartCost - newItem.price * newItem.inCart
+                    );
+                    localStorage.setItem(
+                        "cartNumbers",
+                        productNumbers - newItem.inCart
+                    );
+                }
+            }
+
+            localStorage.setItem("productsInCart", JSON.stringify(items));
+
+            e.preventDefault();
+
+            window.location.reload();
+        });
+    }
 };

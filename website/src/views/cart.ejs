@@ -9,6 +9,7 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
@@ -61,44 +62,7 @@
             <%- include("./partials/footer") %>
 
 
-                <script>
 
-                    function delete1(e) {
-                        /* console.log(e.parentElement.parentElement.children[1].textContent); */
-                        let items = []
-                        /* console.log(items); */
-                        let productNumbers = localStorage.getItem("cartNumbers");
-                        let cartItems = localStorage.getItem("productsInCart");
-                        let cartCost = localStorage.getItem("totalCost");
-
-                        items.price = parseInt(items.price);
-                        cartItems = JSON.parse(cartItems);
-                        let item = Object.values(cartItems)
-                        for (let i = 0; i < item.length; i++) {
-
-
-                            if (item[i].id != e.parentElement.parentElement.children[1].textContent) {
-                                items.push(item[i])
-
-                            }
-
-                            else if (item[i].id == e.parentElement.parentElement.children[1].textContent) {
-
-
-                                localStorage.setItem("totalCost", cartCost - (item[i].price * item[i].inCart))
-                                localStorage.setItem("cartNumbers", productNumbers - item[i].inCart);
-                            }
-                        }
-
-                        localStorage.setItem(
-                            "productsInCart",
-                            JSON.stringify(items))
-                        alert("Eliminaste el producto del carrito")
-                        window.location.reload()
-
-                    }
-                </script>
-                <script src="/js/otroMas.js"></script>
 
 </body>
 
